@@ -6,7 +6,7 @@
 
   <groupId>com.pnap</groupId>
   <artifactId>bmc-sdk</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.4</version>
 
   <name>bmc-sdk</name>
   <!-- FIXME change it to the project's website -->

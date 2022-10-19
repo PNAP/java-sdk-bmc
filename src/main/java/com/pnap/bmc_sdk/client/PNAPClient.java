@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -78,10 +79,14 @@ public class PNAPClient implements Client {
 
 	@Override
 	public String post(String resourceUrl, Object body) {
+		// main header
+		HttpHeaders requestHeader = new HttpHeaders();;
+		requestHeader.setContentType(MediaType.APPLICATION_JSON);
+
 		String url = getUrl(resourceUrl);
 		HttpEntity<Object> request = null;
 		if(body!=null) {
-			request = new HttpEntity<>(body);
+			request = new HttpEntity<>(body,requestHeader);
 		}
 		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
 		return response.getBody();
